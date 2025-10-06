@@ -1,0 +1,18 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Datos locales
+backend_2.0/data/
+*.log
+
+# Env (¡no subir!)
+.env
+backend_2.0/.env
+frontend_2.0/.env
