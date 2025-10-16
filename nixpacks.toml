@@ -1,0 +1,21 @@
+# nixpacks.toml
+providers = []   # dejamos que use Python pero definimos fases explícitas
+
+[phases.setup]
+# Paquetes de sistema que a veces se necesitan (ajusta a tu caso):
+aptPkgs = ["curl"]  # agrega p.ej. "libpq-dev","build-essential" si usas psycopg2
+
+[phases.install]
+# Requiere requirements.txt o pyproject.toml
+cmds = [
+  "python -m pip install --upgrade pip",
+  "pip install -r requirements.txt"
+]
+
+[variables]
+# Coolify define PORT; aquí sólo la usamos
+PORT = "8000"
+
+[start]
+# Cambia app.main:app por tu ruta ASGI
+cmd = "uvicorn app.main:app --host 0.0.0.0 --port ${PORT}"
